@@ -1,0 +1,512 @@
+/* RESET BÁSICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;    
+}
+
+:root {
+    --primary-color: #60a8dbe8;
+    --secondary-color: #15242e;
+    --tertiary-color: #000000;
+    --accent-color: #f7f6f8;
+    --gray-titles: #91a6b6dc;
+    --expense-color: #893131;
+    --card-borders: #1e77dd63;
+    --card-background: #0000006b;
+    --primary-color-opacity: #7173765a;
+
+
+    --font-primary: "MinhaFonte", sans-serif;
+}
+
+
+@font-face {
+  font-family: "MinhaFonte";
+  src: url("./fonts/Poppins-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MinhaFonte";
+  src: url("./fonts/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MinhaFonte";
+  src: url("./fonts/Poppins-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MinhaFonte";
+  src: url("./fonts/Poppins-Black.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+#app {
+    font-family: var(--font-primary);
+    min-height: 100vh;
+
+    display: grid;
+
+    /* 2 colunas:
+       180px fixa para sidebar
+       1fr ocupa o restante */
+    grid-template-columns: 230px 1fr;
+
+    /* 3 linhas:
+       header
+       main (flexível)
+       footer */
+    grid-template-rows: auto 1fr auto;
+
+    /* Áreas */
+    grid-template-areas:
+        "sidebar header"
+        "sidebar main"
+        "sidebar footer";
+}
+/*
+=========================
+ DEFINIR CADA ÁREA */
+/* ========================= */
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: var(--tertiary-color);
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--accent-color);
+    font-family: var(--font-primary), sans-serif;
+}
+
+.financas {
+    color: var(--accent-color);  
+    font-size: 1.8rem;  
+}
+
+.first {
+    background-color: var(--primary-color);
+    padding: 8px;
+    color: var(--secondary-color);
+    border-radius: 8px;
+}
+
+.lista-de-servicos {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.containers-services {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.menu-itens {
+    list-style-type: none;
+    font-size: 14px;
+}
+
+.header {
+    grid-area: header;
+    background-color: var(--primary-color);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.calendario { 
+    color: var(--accent-color);
+    font-size: 12px;
+    padding: 8px 16px;
+    background-color: var(--card-background);
+    border: 1px solid var(--tertiary-color);
+    border-radius: 5px;
+}
+
+.titulo {
+    color: #1c152e;
+    font-weight:bolder;
+    font-size: 3rem;
+}
+
+.subtitle {
+    color: var(--accent-color);
+    font-size: 12px;
+}
+
+.exportar {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.main {
+    grid-area: main;
+    padding: 40px;
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 48px; 
+    align-items: center; 
+}
+
+/* .transacoes, .cards-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+} */
+
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    max-width: 1200px; 
+}
+
+.transacoes {
+    display: grid;
+    grid-template-columns: 350px 1fr; 
+    gap: 32px;
+    width: 100%;
+    max-width: 1200px;
+    align-items: start;
+}
+
+.nova-transacao {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--card-borders);
+}
+
+.card {
+    border: 1px solid var(--card-borders);
+    border-radius: 12px;
+    padding: 24px;
+    background-color: var(--card-background);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.titulo-card {
+    color: var(--accent-color);
+    font-size: 14px;
+}
+
+.valor {
+    color: var(--accent-color);
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+.positivo {
+    color: var(--primary-color);
+}
+
+.negativo {
+    color: var(--primary-color);
+}
+
+.informacao {
+    color: var(--accent-color);
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.expense-color {
+    color: var(--expense-color);
+}
+
+.titulo-nova-transacao-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 8px;
+}
+
+.titulo-nova-transacao {
+    color: var(--accent-color);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.nova-transacao-icon {
+    color: var(--primary-color);
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form-container {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-container label {
+    color: var(--gray-titles);
+    font-size: 12px;
+}
+
+.form-container input, .form-container select {
+    padding: 8px;
+    border: 1px solid var(--card-borders);
+    border-radius: 4px;
+    background-color: transparent;
+    color: var(--accent-color);
+}
+
+.description-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.qtd-tipo-transacao-container {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    width: 100%;
+}
+
+.qtd-container, .tipo-transacao-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+}
+
+.categoria-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 8px;
+    padding: 10px;
+}
+
+.categorias {
+    color: var(--accent-color);
+    font-size: 12px;
+    padding: 12px;
+    border: 1px solid var(--card-borders);
+    border-radius: 8px;
+}
+
+.adiciona-historia {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.adiciona-historia:hover {
+    color: var(--accent-color);
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.titulo-historico-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;    
+}
+
+.icons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;   
+}
+
+.sub-titulo-historico {
+    color: var(--accent-color);
+    font-size: 21px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.cabecalho-tabela {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; 
+    padding: 10px 20px;
+    color: var(--gray-titles);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.item-transacao {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    align-items: center;
+    background-color: var(--card-background);
+    border: 1px solid var(--card-borders);
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin-bottom: 12px;
+}
+
+.info-transacao {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.historico {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card-background);
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--card-borders);
+    width: 100%;
+
+}
+
+.caixa-icone {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color); 
+}
+
+.real-icon {
+    font-size: 10px;   
+}
+
+.nome-transacao {
+    color: var(--accent-color);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.etiqueta {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 400;
+    display: inline-block;
+    background-color: var(--tertiary-color);
+}
+
+.etiqueta-receita { color: var(--primary-color); }
+.etiqueta-despesa { color: var(--primary-color); }
+
+.data-transacao {
+    color: var(--gray-titles);
+    font-size: 12px;
+}
+
+.valor-transacao {
+    color: var(--accent-color);
+    font-weight: 600;
+    text-align: right;
+    font-size: 15px;
+}
+
+.rodape-tabela {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.link-extrato {
+    color: var(--gray-titles);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 200;
+    text-transform: uppercase;
+}
+
+.link-extrato:hover {
+    color: var(--accent-color);
+}
+
+
+.footer {
+    grid-area: footer;
+    background-color: var(--secondary-color);
+    color: var(--accent-color);
+    font-size: 10px;
+    font-weight: 200;
+    padding: 15px;
+    text-align: center;
+}
+
+
+.categoria-btn {
+  cursor: pointer;
+}
+
+.categoria-btn.selected {
+    background-color: var(--tertiary-color);
+    color: var(--accent-color);
+    border: 7px;
+    opacity: 0.85;
+    align-items: center;
+    padding: 3px;
+}
+
+
+
